@@ -22,9 +22,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@main
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::945252183366:role/cumulus-s3-bucket-creation-oidc-role
-          role-duration-seconds: 900
-          role-session-name: TestCAWSC
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
       - name: Whoami
         run: |
           aws sts get-caller-identity
