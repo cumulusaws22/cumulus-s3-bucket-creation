@@ -22,8 +22,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@main
         with:
           aws-region: us-east-1
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE }}
       - name: Whoami
         run: |
           aws sts get-caller-identity
